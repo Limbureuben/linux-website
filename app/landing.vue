@@ -348,14 +348,14 @@ onMounted(() => {
 /* Hero Section */
 .hero-section {
   position: relative;
-  min-height: 600px;
+  min-height: 450px;
   background-image: url('/backgroundimage.jpeg');
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   color: white;
-  padding: 80px 0;
+  padding: 60px 0;
 }
 
 .hero-overlay {
@@ -495,7 +495,7 @@ onMounted(() => {
   }
 
   .hero-section {
-    min-height: 500px;
+    min-height: 400px;
     text-align: center;
   }
 
