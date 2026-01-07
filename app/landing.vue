@@ -31,22 +31,24 @@
           <img src="/logo.jpeg" alt="LANIX Technologies" />
         </div>
         
-        <!-- Hamburger Menu Button -->
-        <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
-          <span class="hamburger"></span>
-        </button>
+        <div class="header-right">
+          <!-- Hamburger Menu Button -->
+          <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
+            <span class="hamburger"></span>
+          </button>
 
-        <nav class="main-nav">
-          <ul>
-            <li><a href="#" class="active" @click="closeMenu">Home</a></li>
-            <li><a href="#about" class="nav-link" @click="closeMenu">About</a></li>
-            <li><a href="#services" class="nav-link" @click="closeMenu">Services</a></li>
-            <li><a href="#projects" class="nav-link" @click="closeMenu">Projects</a></li>
-            <li><a href="#contact" class="nav-link" @click="closeMenu">Contacts us</a></li>
-          </ul>
-        </nav>
-        <div class="search-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="#" class="active" @click="closeMenu">Home</a></li>
+              <li><a href="#about" class="nav-link" @click="closeMenu">About</a></li>
+              <li><a href="#services" class="nav-link" @click="closeMenu">Services</a></li>
+              <li><a href="#projects" class="nav-link" @click="closeMenu">Projects</a></li>
+              <li><a href="#contact" class="nav-link" @click="closeMenu">Contacts us</a></li>
+            </ul>
+          </nav>
+          <div class="search-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
         </div>
       </div>
     </header>
@@ -253,6 +255,12 @@ onMounted(() => {
   align-items: center;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
 .logo img {
   height: 60px;
   width: auto;
@@ -455,6 +463,10 @@ onMounted(() => {
 
   .menu-toggle {
     display: block;
+  }
+
+  .header-right {
+    gap: 15px;
   }
 
   .main-nav {
