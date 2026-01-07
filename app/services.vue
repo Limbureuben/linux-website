@@ -86,27 +86,16 @@
   padding-bottom: 40px;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
 /* Header Banner */
 .services-header {
-  background-image: linear-gradient(to right, #004799, #002a5c); /* Blue gradient */
+  background-image: linear-gradient(to right, #004799, #002a5c);
   color: white;
-  padding: 20px 0;
+  padding: 40px 0;
   margin-bottom: 40px;
   position: relative;
   overflow: hidden;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 0;
 }
 
-/* Add a subtle overlay or pattern if needed to match the "tech" look in the banner */
 .services-header::before {
   content: '';
   position: absolute;
@@ -114,7 +103,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/backgroundimage.jpeg'); /* Reusing background for texture */
+  background: url('/backgroundimage.jpeg');
   opacity: 0.1;
   background-size: cover;
 }
@@ -129,14 +118,13 @@
 }
 
 .services-header h2 {
-  font-size: 28px;
+  font-size: clamp(24px, 4vw, 32px);
   font-weight: 700;
   margin: 0;
-  white-space: nowrap;
 }
 
 .services-header p {
-  font-size: 14px;
+  font-size: clamp(14px, 2vw, 16px);
   opacity: 0.9;
   margin: 0;
   max-width: 500px;
@@ -147,22 +135,23 @@
   display: flex;
   align-items: center;
   gap: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .service-item.reverse {
-  flex-direction: row-reverse; /* For alternating layout */
+  flex-direction: row-reverse;
 }
 
 .service-image {
   flex: 1;
+  width: 100%;
 }
 
 .service-image img {
   width: 100%;
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  height: 200px;
+  height: 300px;
   object-fit: cover;
 }
 
@@ -172,17 +161,17 @@
 
 .service-text h3 {
   color: #000;
-  font-size: 18px;
+  font-size: clamp(18px, 3vw, 24px);
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   text-transform: uppercase;
 }
 
 .service-text p {
   color: #555;
-  font-size: 14px;
-  margin-bottom: 15px;
-  line-height: 1.5;
+  font-size: 15px;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .service-text ul {
@@ -193,53 +182,57 @@
 
 .service-text ul li {
   position: relative;
-  padding-left: 20px;
-  margin-bottom: 8px;
+  padding-left: 25px;
+  margin-bottom: 10px;
   color: #555;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .service-text ul li::before {
   content: '•';
   position: absolute;
   left: 0;
-  color: #000; /* Black bullet */
+  color: #004799;
   font-weight: bold;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .service-item {
+@media (max-width: 992px) {
+  .header-flex {
     flex-direction: column;
+    text-align: center;
     gap: 20px;
-    margin-bottom: 40px;
   }
   
-  .service-item.reverse {
+  .services-header p {
+    margin: 0 auto;
+  }
+
+  .service-image img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-item, .service-item.reverse {
     flex-direction: column;
+    gap: 25px;
+    margin-bottom: 50px;
   }
   
   .service-image img {
     height: auto;
-    max-height: 200px;
+    max-height: 300px;
   }
-}
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .service-item {
-    gap: 30px;
+  .service-text {
+    text-align: center;
   }
-  
-  .service-image img {
-    height: 180px;
-  }
-  
-  .service-text h3 {
-    font-size: 16px;
-  }
-  
-  .service-text p, .service-text ul li {
-    font-size: 13px;
+
+  .service-text ul li {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
   }
 }
 </style>

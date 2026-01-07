@@ -98,24 +98,14 @@ const filteredProjects = computed(() => {
   background-color: white;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
 /* Header Banner */
 .projects-header {
   background-image: linear-gradient(to right, #004799, #002a5c);
   color: white;
-  padding: 20px 0;
+  padding: 40px 0;
   margin-bottom: 40px;
   position: relative;
   overflow: hidden;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 0;
 }
 
 .projects-header::before {
@@ -140,14 +130,13 @@ const filteredProjects = computed(() => {
 }
 
 .projects-header h2 {
-  font-size: 28px;
+  font-size: clamp(24px, 4vw, 32px);
   font-weight: 700;
   margin: 0;
-  white-space: nowrap;
 }
 
 .projects-header p {
-  font-size: 14px;
+  font-size: clamp(14px, 2vw, 16px);
   opacity: 0.9;
   margin: 0;
   max-width: 500px;
@@ -156,9 +145,9 @@ const filteredProjects = computed(() => {
 /* Filter Bar */
 .filter-bar {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 40px;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -171,6 +160,7 @@ const filteredProjects = computed(() => {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
+  font-size: 14px;
 }
 
 .filter-btn.active {
@@ -188,26 +178,27 @@ const filteredProjects = computed(() => {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
   flex: 1;
 }
 
 .project-card {
   background: #F8FAFC;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  transition: transform 0.3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
 }
 
 .project-image {
   position: relative;
-  height: 200px;
+  height: 220px;
 }
 
 .project-image img {
@@ -233,7 +224,7 @@ const filteredProjects = computed(() => {
 }
 
 .project-info {
-  padding: 20px;
+  padding: 25px;
 }
 
 .category-tag {
@@ -243,25 +234,25 @@ const filteredProjects = computed(() => {
   font-size: 11px;
   padding: 4px 12px;
   border-radius: 4px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   text-transform: capitalize;
 }
 
 .project-info h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: #1A202C;
 }
 
 .case-study-link {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   color: #004799;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .nav-btn {
@@ -279,8 +270,14 @@ const filteredProjects = computed(() => {
 
 /* Responsive */
 @media (max-width: 992px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .header-flex {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .projects-header p {
+    margin: 0 auto;
   }
 }
 
@@ -293,8 +290,12 @@ const filteredProjects = computed(() => {
     display: none;
   }
   
-  .projects-header h2 {
-    font-size: 24px;
+  .projects-header {
+    padding: 30px 0;
+  }
+
+  .project-image {
+    height: 200px;
   }
 }
 </style>

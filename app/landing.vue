@@ -25,18 +25,24 @@
     </div>
 
     <!-- Header -->
-    <header class="main-header">
+    <header class="main-header" :class="{ 'menu-open': isMenuOpen }">
       <div class="container header-content">
         <div class="logo">
           <img src="/logo.jpeg" alt="LANIX Technologies" />
         </div>
+        
+        <!-- Hamburger Menu Button -->
+        <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
+          <span class="hamburger"></span>
+        </button>
+
         <nav class="main-nav">
           <ul>
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#contact" class="nav-link">Contacts us</a></li>
+            <li><a href="#" class="active" @click="closeMenu">Home</a></li>
+            <li><a href="#about" class="nav-link" @click="closeMenu">About</a></li>
+            <li><a href="#services" class="nav-link" @click="closeMenu">Services</a></li>
+            <li><a href="#projects" class="nav-link" @click="closeMenu">Projects</a></li>
+            <li><a href="#contact" class="nav-link" @click="closeMenu">Contacts us</a></li>
           </ul>
         </nav>
         <div class="search-icon">
@@ -49,8 +55,8 @@
     <section class="hero-section">
       <div class="hero-overlay"></div>
       <div class="container hero-content">
-        <h1 class="animate-fade-up">Your digital world is our<br>priority</h1>
-        <p class="animate-fade-up" style="transition-delay: 0.2s">We empowering businesses with secure, intelligent, and<br>dependable IT solutions</p>
+        <h1 class="animate-fade-up">Your digital world is our priority</h1>
+        <p class="animate-fade-up" style="transition-delay: 0.2s">We empowering businesses with secure, intelligent, and dependable IT solutions</p>
         <button class="cta-button animate-fade-up hover-glow" style="transition-delay: 0.4s">Get started</button>
       </div>
     </section>
@@ -129,7 +135,7 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import AboutUs from './aboutUs.vue'
 import Services from './services.vue'
 import Projects from './projects.vue'
@@ -137,6 +143,22 @@ import MissionVision from './missionVision.vue'
 import OurTeam from './ourTeam.vue'
 import ContactUs from './contactUs.vue'
 import Footer from './footer.vue'
+
+const isMenuOpen = ref(false)
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+  if (isMenuOpen.value) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
+}
+
+const closeMenu = () => {
+  isMenuOpen.value = false
+  document.body.style.overflow = ''
+}
 
 onMounted(() => {
   const observerOptions = {
@@ -184,14 +206,6 @@ onMounted(() => {
   scroll-behavior: smooth;
 }
 
-/* Scroll Animation Styles removed from here as they are now global in app.vue */
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
 /* Top Bar */
 .top-bar {
   background-color: #004799; /* Dark Blue */
@@ -228,6 +242,9 @@ onMounted(() => {
   background-color: white;
   padding: 15px 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-content {
@@ -237,7 +254,8 @@ onMounted(() => {
 }
 
 .logo img {
-  height: 60px; /* Increased from 40px */
+  height: 60px;
+  width: auto;
 }
 
 .main-nav ul {
@@ -282,16 +300,54 @@ onMounted(() => {
   cursor: pointer;
 }
 
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.hamburger {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: #004799;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background: #004799;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { bottom: -8px; }
+
+.menu-open .hamburger { background: transparent; }
+.menu-open .hamburger::before { transform: translateY(8px) rotate(45deg); }
+.menu-open .hamburger::after { transform: translateY(-8px) rotate(-45deg); }
+
 /* Hero Section */
 .hero-section {
   position: relative;
-  height: 600px;
+  min-height: 600px;
   background-image: url('/backgroundimage.jpeg');
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   color: white;
+  padding: 80px 0;
 }
 
 .hero-overlay {
@@ -300,7 +356,7 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .hero-content {
@@ -310,20 +366,21 @@ onMounted(() => {
 }
 
 .hero-content h1 {
-  font-size: 48px;
+  font-size: clamp(32px, 5vw, 48px);
   font-weight: 700;
   margin-bottom: 20px;
   line-height: 1.2;
+  max-width: 800px;
 }
 
 .hero-content p {
-  font-size: 18px;
+  font-size: clamp(16px, 2vw, 18px);
   margin-bottom: 30px;
   max-width: 600px;
 }
 
 .cta-button {
-  background-color: #5A67D8; /* Purple/Blueish button */
+  background-color: #5A67D8;
   color: white;
   border: none;
   padding: 12px 30px;
@@ -341,7 +398,7 @@ onMounted(() => {
 /* Features Section */
 .features-section {
   position: relative;
-  margin-top: -80px; /* Overlap hero section */
+  margin-top: -80px;
   padding-bottom: 60px;
   z-index: 2;
 }
@@ -385,38 +442,72 @@ onMounted(() => {
 }
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .hero-content h1 {
-    font-size: 36px;
   }
 }
 
 @media (max-width: 768px) {
-  .top-bar-content {
-    flex-direction: column;
-    gap: 10px;
+  .top-bar {
+    display: none; /* Hide top bar on mobile for cleaner look */
   }
-  
-  .header-content {
-    flex-direction: column;
-    gap: 15px;
+
+  .menu-toggle {
+    display: block;
   }
-  
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: white;
+    padding: 100px 40px;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  }
+
+  .menu-open .main-nav {
+    right: 0;
+  }
+
   .main-nav ul {
-    gap: 15px;
-    font-size: 14px;
+    flex-direction: column;
+    gap: 25px;
   }
-  
+
+  .main-nav a {
+    font-size: 20px;
+  }
+
+  .hero-section {
+    min-height: 500px;
+    text-align: center;
+  }
+
+  .hero-content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .features-section {
+    margin-top: 40px;
+  }
+
   .features-grid {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    height: 50px;
+  }
   
-  .features-section {
-    margin-top: 40px;
+  .hero-section {
+    padding: 60px 0;
   }
 }
 </style>

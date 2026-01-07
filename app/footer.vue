@@ -90,18 +90,12 @@
   background-color: white;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
 /* CTA Banner */
 .footer-cta {
   background-image: linear-gradient(rgba(0, 71, 153, 0.85), rgba(0, 71, 153, 0.85)), url('/backgroundimage.jpeg');
   background-size: cover;
   background-position: center;
-  padding: 40px 0;
+  padding: 60px 0;
   color: white;
 }
 
@@ -113,19 +107,19 @@
 }
 
 .cta-text h2 {
-  font-size: 24px;
+  font-size: clamp(20px, 4vw, 28px);
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   max-width: 600px;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
 .cta-btn {
   background-color: #004799;
   color: white;
-  padding: 12px 30px;
+  padding: 12px 35px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
@@ -135,24 +129,25 @@
 
 .cta-btn:hover {
   background-color: #002a5c;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .cta-info p {
-  font-size: 14px;
-  margin: 5px 0;
+  font-size: 15px;
+  margin: 8px 0;
   opacity: 0.9;
 }
 
 /* Main Footer Content */
 .footer-content {
-  padding: 60px 0;
+  padding: 80px 0;
   border-bottom: 1px solid #F0F4F8;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
   gap: 40px;
 }
 
@@ -160,7 +155,7 @@
   font-size: 18px;
   font-weight: 700;
   color: #1A202C;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   position: relative;
 }
 
@@ -171,7 +166,7 @@
 }
 
 .footer-col ul li {
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .footer-col ul li a {
@@ -186,22 +181,23 @@
 }
 
 .brand-col .footer-logo {
-  height: 60px; /* Increased from 40px */
-  margin-bottom: 20px;
+  height: 60px;
+  width: auto;
+  margin-bottom: 25px;
 }
 
 .brand-col p {
   color: #718096;
-  font-size: 14px;
-  line-height: 1.6;
-  max-width: 250px;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 300px;
 }
 
 .contact-info {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 20px;
+  margin-bottom: 25px;
 }
 
 .contact-item {
@@ -211,26 +207,26 @@
 }
 
 .contact-item svg {
-  color: #1A202C;
+  color: #004799;
   flex-shrink: 0;
   margin-top: 3px;
 }
 
 .contact-item p {
   color: #718096;
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.6;
   margin: 0;
 }
 
 .social-links {
   display: flex;
-  gap: 12px;
+  gap: 15px;
 }
 
 .social-icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: #1A202C;
   color: white;
@@ -242,13 +238,13 @@
 
 .social-icon:hover {
   background-color: #004799;
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 }
 
 /* Copyright Bar */
 .footer-bottom {
   background-color: #004799;
-  padding: 15px 0;
+  padding: 20px 0;
   text-align: center;
   color: white;
 }
@@ -260,14 +256,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .copyright-icon {
   background: white;
   color: #004799;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -277,15 +273,26 @@
 }
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
   }
-  
+}
+
+@media (max-width: 768px) {
   .cta-flex {
     flex-direction: column;
     text-align: center;
-    gap: 20px;
+    gap: 30px;
+  }
+
+  .cta-text h2 {
+    margin-bottom: 20px;
+  }
+
+  .footer-content {
+    padding: 60px 0;
   }
 }
 
@@ -297,6 +304,7 @@
   
   .contact-item {
     justify-content: center;
+    text-align: left;
   }
   
   .social-links {
@@ -305,6 +313,15 @@
   
   .brand-col p {
     margin: 0 auto;
+  }
+
+  .footer-col h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #004799;
+    margin: 10px auto 0;
   }
 }
 </style>

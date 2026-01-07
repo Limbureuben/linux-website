@@ -98,12 +98,6 @@ const handleSubmit = () => {
   background-color: #F8FAFC;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
 .contact-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -115,12 +109,12 @@ const handleSubmit = () => {
 .contact-form-container {
   background: white;
   padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
 .form-title {
-  font-size: 24px;
+  font-size: clamp(20px, 3vw, 24px);
   font-weight: 700;
   color: #004799;
   margin-bottom: 25px;
@@ -129,27 +123,27 @@ const handleSubmit = () => {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 20px;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 10px 15px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background-color: #F3F4F6;
+  padding: 12px 15px;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  background-color: #F8FAFC;
   font-family: 'Outfit', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   color: #4A5568;
   transition: all 0.3s ease;
-  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -157,40 +151,39 @@ const handleSubmit = () => {
   outline: none;
   border-color: #004799;
   background-color: white;
-  box-shadow: 0 0 0 3px rgba(0, 71, 153, 0.05);
+  box-shadow: 0 0 0 3px rgba(0, 71, 153, 0.1);
 }
 
 .submit-btn {
   background-color: #004799;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 30px;
   border: none;
-  border-radius: 4px;
-  font-size: 14px;
+  border-radius: 6px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   align-self: flex-start;
-  margin-top: 5px;
 }
 
 .submit-btn:hover {
   background-color: #002a5c;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(0, 71, 153, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 71, 153, 0.2);
 }
 
 /* Info Card Styling */
 .contact-info-card {
   background: white;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
 .info-header {
   background-color: #004799;
-  padding: 15px;
+  padding: 20px;
   text-align: center;
 }
 
@@ -199,14 +192,14 @@ const handleSubmit = () => {
   font-size: 16px;
   font-weight: 700;
   margin: 0;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .info-body {
-  padding: 25px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 
 .info-item {
@@ -218,9 +211,9 @@ const handleSubmit = () => {
 .info-icon {
   color: #004799;
   background: #f0f7ff;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,21 +221,21 @@ const handleSubmit = () => {
 }
 
 .info-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 
 .info-text h4 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: #1A202C;
-  margin: 0 0 3px 0;
+  margin: 0 0 5px 0;
 }
 
 .info-text p {
-  font-size: 13px;
+  font-size: 14px;
   color: #4A5568;
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -250,22 +243,31 @@ const handleSubmit = () => {
 @media (max-width: 992px) {
   .contact-grid {
     grid-template-columns: 1fr;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
   }
 }
 
 @media (max-width: 600px) {
+  .contact-us-section {
+    padding: 60px 0;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
   
   .contact-form-container {
-    padding: 20px;
+    padding: 25px;
   }
   
   .info-body {
-    padding: 20px;
+    padding: 25px;
+  }
+
+  .submit-btn {
+    width: 100%;
   }
 }
 </style>
